@@ -45,12 +45,14 @@ func (p *pastebinUseCase) Create(shortlink string, expiration uint, content []by
 		return domain.Pastebin{}, err
 	}
 
+	timeNow := time.Now()
+
 	// pastebin data to be saved
 	pb := domain.Pastebin{
 		Base: domain.Base{
 			Id:        newUUID.String(),
-			CreatedAt: time.Now(),
-			UpdatedAt: time.Now(),
+			CreatedAt: timeNow,
+			UpdatedAt: timeNow,
 		},
 		Shortlink:                 shortlink,
 		ExpirationLengthInMinutes: expiration,
@@ -66,9 +68,14 @@ func (p *pastebinUseCase) Create(shortlink string, expiration uint, content []by
 	return pb, nil
 }
 
+// get pastebin data with given shortlink
 func (p *pastebinUseCase) Get(shortlink string) (domain.Pastebin, error) {
-	//TODO implement me
-	panic("implement me")
+	pastebin, err := p.pastebinRepository.Get(shortlink)
+	if err != nil {
+		return domain.Pastebin{}, err
+	}
+
+	return pastebin, nil
 }
 
 func (p *pastebinUseCase) List() ([]domain.Pastebin, error) {
