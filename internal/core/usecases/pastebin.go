@@ -78,7 +78,7 @@ func (p *pastebinUseCase) Get(shortlink string) (domain.Pastebin, error) {
 	return pastebin, nil
 }
 
+// get all pastebin data
 func (p *pastebinUseCase) List() ([]domain.Pastebin, error) {
-	//TODO implement me
-	panic("implement me")
+	return p.pastebinRepository.List()
 }
