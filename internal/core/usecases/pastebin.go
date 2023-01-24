@@ -78,6 +78,6 @@ func (p *pastebinUseCase) Get(shortlink string) (domain.Pastebin, error) {
 }
 
 // get all pastebin data
-func (p *pastebinUseCase) List() ([]domain.Pastebin, error) {
+func (p *pastebinUseCase) GetAll() ([]domain.Pastebin, error) {
 	return p.pastebinRepository.List()
 }
