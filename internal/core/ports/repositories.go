@@ -7,3 +7,7 @@ type PastebinRepository interface {
 	Get(shortlink string) (domain.Pastebin, error)
 	List() ([]domain.Pastebin, error)
 }
+
+type PastebinContentRepository interface {
+	Save(content []byte) (string, error)
+}

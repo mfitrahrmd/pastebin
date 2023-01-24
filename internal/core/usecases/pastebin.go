@@ -5,17 +5,16 @@ import (
 	"github.com/mfitrahrmd/pastebin/internal/core/domain"
 	"github.com/mfitrahrmd/pastebin/internal/core/ports"
 	"github.com/mfitrahrmd/pastebin/internal/infrastructures/common"
-	"github.com/mfitrahrmd/pastebin/internal/infrastructures/contentStorage"
 	"time"
 )
 
 type pastebinUseCase struct {
 	pastebinRepository     ports.PastebinRepository
-	pastebinContentStorage contentStorage.PastebinContentStorage
+	pastebinContentStorage ports.PastebinContentRepository
 }
 
 // pastebin usecase constructor
-func NewPastebinUseCase(pastebinRepository ports.PastebinRepository, pastebinContentStorage contentStorage.PastebinContentStorage) ports.PastebinUseCase {
+func NewPastebinUseCase(pastebinRepository ports.PastebinRepository, pastebinContentStorage ports.PastebinContentRepository) *pastebinUseCase {
 	p := pastebinUseCase{
 		pastebinRepository:     pastebinRepository,
 		pastebinContentStorage: pastebinContentStorage,
