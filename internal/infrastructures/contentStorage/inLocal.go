@@ -26,7 +26,7 @@ type pastebinContentLocalStorage struct {
 	config Config
 }
 
-func NewPastebinContentLocalStorage(config ...Config) PastebinContentStorage {
+func NewPastebinContentLocalStorage(config ...Config) *pastebinContentLocalStorage {
 	s := pastebinContentLocalStorage{}
 
 	err := s.initialize(config...)

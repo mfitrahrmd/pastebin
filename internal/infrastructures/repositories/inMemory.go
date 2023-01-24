@@ -3,14 +3,13 @@ package repositories
 import (
 	"errors"
 	"github.com/mfitrahrmd/pastebin/internal/core/domain"
-	"github.com/mfitrahrmd/pastebin/internal/core/ports"
 )
 
 type inMemoryPastebinRepository struct {
 	pastebin map[string]domain.Pastebin
 }
 
-func NewInMemoryPastebinRepository() ports.PastebinRepository {
+func NewInMemoryPastebinRepository() *inMemoryPastebinRepository {
 	pr := inMemoryPastebinRepository{
 		pastebin: map[string]domain.Pastebin{},
 	}
